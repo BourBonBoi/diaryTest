@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Дневник</h1>
+
+    <div id="post-form">
+        <input type="text" id="title" placeholder="Title" required/>
+        <textarea id="content" placeholder="Content" required></textarea>
+        <input type="file" id="image"/>
+        <input type="text" id="tags" placeholder="Tags (comma separated)"/>
+        <button id="submit">Добавить</button>
+    </div>
+
+    <div>
+        <input type="text" id="search" placeholder="Поиск по тегам">
+        <button id="search-btn">Поиск</button>
+    </div>
+
+    <div id="posts"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
