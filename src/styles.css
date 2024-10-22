@@ -60,3 +60,56 @@ button:hover {
     border-radius: 4px;
     margin: 10px 0;
 }
+
+body {
+    line-height: 1.6;
+}
+
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.navbar {
+    background: #343a40;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 10px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #f1f1f1;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+    background: white;
+}
+
+.card-header {
+    background: #4a90e2;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
