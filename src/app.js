@@ -12,11 +12,14 @@ function savePostsToStorage(posts) {
 }
 
 // Функция для отображения постов
-function displayPosts() {
+function displayPosts(posts = null) {
     const postsContainer = document.getElementById('posts');
     postsContainer.innerHTML = ''; // Очищаем посты
 
-    const posts = getPostsFromStorage();
+    if (!posts) {
+        posts = getPostsFromStorage(); // Получаем все посты, если параметр не передан
+    }
+
     for (let post of posts) {
         const postDiv = document.createElement('div');
         postDiv.className = 'post';
@@ -34,7 +37,7 @@ function displayPosts() {
         // Если есть изображение, добавляем его
         if (post.image) {
             const imageElement = document.createElement('img');
-            imageElement.src = post.image; // В случае хранения данных в localStorage мы храним URL
+            imageElement.src = post.image;
             postDiv.appendChild(imageElement);
         }
 
@@ -62,7 +65,7 @@ document.getElementById('submit').onclick = function() {
         const newPost = {
             title,
             content,
-            image: event.target.result, // Сохраняем URL изображения
+            image: event.target.result,
             tags
         };
 
@@ -79,12 +82,11 @@ document.getElementById('submit').onclick = function() {
     };
     
     if (imageFile) {
-        reader.readAsDataURL(imageFile); // Читаем файл как Data URL
+        reader.readAsDataURL(imageFile);
     } else {
-        reader.onload({ target: { result: null } }); // Если нет изображения, передаем null
+        reader.onload({ target: { result: null } });
     }
 };
-
 
 // Функция фильтрации постов по тегам
 function filterPostsByTag(tag) {
@@ -93,15 +95,14 @@ function filterPostsByTag(tag) {
     displayPosts(filteredPosts);
 }
 
+// Функция для поиска постов по тегу
+function searchPostsByTag() {
+    const tag = document.getElementById('search').value.trim();
+    filterPostsByTag(tag); // Фильтруем посты по тегу
+}
+
 // Обработчик события для поиска по тегам
-document.getElementById('searchButton').addEventListener('click', () => {
-    const tag = document.getElementById('searchInput').value.trim();
-    if (tag) {
-        filterPostsByTag(tag);
-    } else {
-        displayPosts(getPostsFromStorage());  // Отобразить все посты, если поле пустое
-    }
-});
+document.getElementById('search-btn').addEventListener('click', searchPostsByTag);
 
 // Инициализация отображения постов при загрузке страницы
-displayPosts(getPostsFromStorage());
+displayPosts();
